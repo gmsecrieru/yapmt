@@ -15,3 +15,8 @@ $ cd yapmt
 $ chmod +x run.sh && ./run.sh
 ```
 
+If you'd like to seed the database, simply run:
+```bash
+$ YAPMT_SEED_DB=1 ./run.sh
+```
+Please notice that this will only work if `project` collection is empty.

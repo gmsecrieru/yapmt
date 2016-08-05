@@ -21,3 +21,5 @@ kadira:dochead
 static-html
 react-meteor-data
 less
+aldeed:simple-schema
+aldeed:collection2
