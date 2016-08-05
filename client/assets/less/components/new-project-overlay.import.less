@@ -1,0 +1,41 @@
+@titleColor: #FFE2CD;
+
+.new-project-overlay {
+  display: none;
+  position: fixed;
+  cursor: not-allowed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+
+  &.open {
+    display: block;
+  }
+
+  &__inner {
+    height: 100%;
+    width: 100%;
+    padding-top: 3em;
+
+    h3 {
+      color: @titleColor;
+      font-size: 3em;
+      margin-bottom: 2em;
+    }
+
+    input {
+      height: 2em;
+      line-height: 2em;
+      font-size: 2em;
+      border: 0;
+      padding: 0.2em;
+      min-width: 70%;
+    }
+  }
+}

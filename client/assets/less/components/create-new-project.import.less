@@ -1,0 +1,26 @@
+@bgColor: #ffcdd2;
+
+.create-new-project {
+  background-color: @bgColor;
+  height: 3em;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 0.5em 1em;
+
+  &__action {
+    float: right;
+    background-color: #ccc;
+    color: #000;
+    cursor: pointer;
+    height: 2em;
+    line-height: 2em;
+    width: 100px;
+    text-align: center;
+
+    &:after {
+      clear: both;
+    }
+  }
+}

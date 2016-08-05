@@ -10,3 +10,12 @@ FlowRouter.route('/', {
     mount(App, { view: require('/imports/ui/containers/IndexPageContainer.jsx').default });
   }
 });
+
+FlowRouter.route('/project/:id', {
+  name: 'project-by-id',
+  action(params) {
+    const { id } = params;
+
+    mount(App, { view: require('/imports/ui/containers/ProjectPageContainer.jsx').default, viewProps: { id } });
+  }
+});

@@ -1,6 +1,8 @@
 import React from 'react';
 import { _ } from 'meteor/underscore';
 
+import CreateNewProject from '/imports/ui/components/CreateNewProject.jsx';
+
 class MainLayout extends React.Component {
 
   render() {
@@ -9,6 +11,7 @@ class MainLayout extends React.Component {
     return (
       <div className="main-layout">
         <this.props.view {...props} />
+        <CreateNewProject />
       </div>
     );
   }
