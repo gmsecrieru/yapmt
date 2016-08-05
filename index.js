@@ -7,6 +7,6 @@ import App from '/imports/ui/App.jsx';
 FlowRouter.route('/', {
   name: 'index',
   action() {
-    mount(App, { view: require('/imports/ui/pages/IndexPage.jsx').default });
+    mount(App, { view: require('/imports/ui/containers/IndexPageContainer.jsx').default });
   }
 });

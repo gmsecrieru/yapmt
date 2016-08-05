@@ -1,0 +1,33 @@
+@boxBgColor: #fff;
+@projectNameColor: #ff6675;
+@projectTaskCountColor: #e0e0e0;
+
+.project-box {
+  background-color: @boxBgColor;
+  padding: 0.5em;
+  margin-bottom: 1em;
+
+  &__content {
+    display: inline-block;
+    width: 80%;
+    h3 {
+      color: @projectNameColor;
+      font-size: 2em;
+      padding-bottom: 0.25em;
+    }
+
+    small {
+      color: @projectTaskCountColor;
+      font-size: 1em;
+    }
+  }
+
+  &__actions {
+    display: inline-block;
+    width: 20%;
+    i {
+      color: #000;
+    }
+  }
+
+}
