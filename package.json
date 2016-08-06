@@ -3,12 +3,14 @@
   "author": "George Secrieru <george@secrieru.net> (https://gmsecrie.ru)",
   "private": true,
   "dependencies": {
+    "autosize": "^3.0.17",
+    "classnames": "^2.2.5",
     "meteor-node-stubs": "~0.2.0",
-    "react": "^15.2.0",
-    "react-dom": "^15.2.0",
-    "react-addons-pure-render-mixin": "^15.2.1",
-    "react-mounter": "^1.2.0",
     "moment": "^2.14.1",
+    "react": "^15.2.0",
+    "react-addons-pure-render-mixin": "^15.2.1",
+    "react-dom": "^15.2.0",
+    "react-mounter": "^1.2.0",
     "underscore.string": "^3.3.4"
   }
 }
