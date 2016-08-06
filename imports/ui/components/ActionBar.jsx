@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import NewProjectOverlay from '/imports/ui/components/NewProjectOverlay.jsx';
 
-export default class CreateNewProject extends React.Component {
+export default class ActionBar extends React.Component {
   constructor() {
     super();
 
@@ -12,8 +12,8 @@ export default class CreateNewProject extends React.Component {
 
   render() {
     return (
-      <div className="create-new-project">
-        <a className="create-new-project__action" title="create new project" onClick={ this.handleNewProject }>Add project</a>
+      <div className="action-bar">
+        <a className="action-bar__action" title="create new project" onClick={ this.handleNewProject }>Add project</a>
       </div>
     );
   }

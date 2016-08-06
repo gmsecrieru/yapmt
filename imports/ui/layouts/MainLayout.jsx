@@ -1,7 +1,7 @@
 import React from 'react';
 import { _ } from 'meteor/underscore';
 
-import CreateNewProject from '/imports/ui/components/CreateNewProject.jsx';
+import ActionBar from '/imports/ui/components/ActionBar.jsx';
 
 class MainLayout extends React.Component {
 
@@ -11,7 +11,7 @@ class MainLayout extends React.Component {
     return (
       <div className="main-layout">
         <this.props.view {...props} />
-        <CreateNewProject />
+        <ActionBar />
       </div>
     );
   }
