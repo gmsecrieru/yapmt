@@ -10,6 +10,12 @@ class ProjectPage extends React.Component {
     super();
   }
 
+  componentDidMount() {
+    if (!this.props.tasks.length) {
+      Session.set('addNewTask', true);
+    }
+  }
+
   componentWillUnmount() {
     Session.set('addNewTask', false);
   }

@@ -54,10 +54,9 @@ export default class NewProjectTask extends React.Component {
     if (keyCode === 27) {
       return this.tearDownComponent();
     } else if (keyCode === 13 && value) { // enter key
+      e.preventDefault();
       if (this.createNewTask(value)) {
-        this.tearDownComponent();
-      } else {
-        e.preventDefault();
+        e.target.value = '';
       }
     }
   }
