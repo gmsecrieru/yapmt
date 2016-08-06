@@ -11,7 +11,7 @@ class MainLayout extends React.Component {
     return (
       <div className="main-layout">
         <this.props.view {...props} />
-        <ActionBar />
+        <ActionBar id={ props.id } />
       </div>
     );
   }

@@ -10,7 +10,6 @@
   padding: 0.5em 1em;
 
   &__action {
-    float: right;
     background-color: #ccc;
     color: #000;
     cursor: pointer;
@@ -21,6 +20,18 @@
 
     &:after {
       clear: both;
+    }
+
+    &--project {
+      float: right;
+    }
+
+    &--list, &--task {
+      float: left;
+    }
+
+    &--task {
+      margin-left: 1em;
     }
   }
 }
