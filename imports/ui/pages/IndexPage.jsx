@@ -1,8 +1,18 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import ProjectBox from '/imports/ui/components/ProjectBox.jsx';
+import NewProjectOverlay from '/imports/ui/components/NewProjectOverlay.jsx';
 
-export default class IndexPage extends React.Component {
+class IndexPage extends React.Component {
+
+  componentDidMount() {
+    this.setUpNewProject();
+  }
+
+  componentDidUpdate() {
+    this.setUpNewProject();
+  }
 
   render() {
     return (
@@ -16,4 +26,23 @@ export default class IndexPage extends React.Component {
       </div>
     );
   }
+
+  setUpNewProject() {
+    if (!this.props.projects.length) {
+      ReactDOM.render(
+        <NewProjectOverlay />,
+        document.getElementById('new-project-overlay-container')
+      );
+    }
+  }
 }
+
+IndexPage.propTypes = {
+  projects: React.PropTypes.array
+}
+
+IndexPage.defaultProps = {
+  projects: []
+}
+
+export default IndexPage;
