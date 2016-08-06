@@ -29,7 +29,7 @@ export default class NewProjectOverlay extends React.Component {
     return (
       <div className="new-project-overlay__inner" onClick={ this.handleOverlayClick }>
         <h3>Create new project</h3>
-        <input type="text" name="name" ref="nameInput" onKeyDown={ this.handleKeyDown } />
+        <input type="text" name="name" placeholder="project name + [enter]" ref="nameInput" onKeyDown={ this.handleKeyDown } />
       </div>
     )
   }
