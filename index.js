@@ -1,6 +1,7 @@
 import { FlowRouter } from 'meteor/kadira:flow-router-ssr';
 import { mount } from 'react-mounter';
 
+import '/imports/startup';
 import App from '/imports/ui/App.jsx';
 
 // these routes work both client and server-side (SSR)
