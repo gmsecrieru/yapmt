@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Project, Task } from '/imports/api/project/collections';
 
 export const projectList = Meteor.publish('projectList', () => {
-  return Project.find();
+  return Project.find({}, { sort: { name: 1 }});
 });
 
 export const projectById = Meteor.publish('projectById', (id) => {
