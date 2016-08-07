@@ -13,6 +13,13 @@ $ curl https://install.meteor.com/ | sh
 # head into application dir and go for it it!
 $ cd yapmt
 $ chmod +x run.sh && ./run.sh
+[[[[[ ~/Projects/gmsecrieru/yapmt ]]]]]
+
+=> Started proxy.
+=> Started MongoDB.
+=> Started your app.
+
+=> App running at: http://localhost:3000/
 ```
 
 ## YAPMT & MongoDB & Meteor
@@ -28,4 +35,5 @@ If you'd like to seed the database, you can set `YAPMT_SEED_DB` variable, e.g.:
 ```bash
 $ YAPMT_SEED_DB=1 ./run.sh
 ```
+
 Please keep in mind this will only work if `project` collection is empty.
