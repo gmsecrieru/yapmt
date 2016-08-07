@@ -20,7 +20,7 @@ export default class ActionBar extends React.Component {
     if (id) {
       actions.push({
         className: 'action-bar__action action-bar__action--list',
-        title: 'Back to list',
+        title: 'Back',
         onClick: this.handleProjectsList
       });
       actions.push({
