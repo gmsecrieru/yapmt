@@ -1,6 +1,8 @@
 import React from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router-ssr';
 
+import ProjectTotalTasksContainer from '/imports/ui/containers/ProjectTotalTasksContainer.jsx';
+
 class ProjectBox extends React.Component {
 
   constructor() {
@@ -11,13 +13,12 @@ class ProjectBox extends React.Component {
 
   render() {
     const { project } = this.props;
-    const { tasks = [] } = project;
 
     return (
       <div className='project-box' onClick={ this.handleBoxClick }>
         <div className='project-box__content'>
           <h3>{ project.name }</h3>
-          <small>{ `${tasks.length} ${tasks.length === 1 ? 'task' : 'tasks'}` }</small>
+          <ProjectTotalTasksContainer project_id={ project._id } />
         </div>
         <div className='project-box__actions'>
           <i className='project-box__actions__remove' title="Remove">&times;</i>
