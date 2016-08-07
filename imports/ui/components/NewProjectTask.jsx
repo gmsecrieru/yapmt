@@ -12,6 +12,7 @@ export default class NewProjectTask extends React.Component {
 
     this.handleOnBlur = this.handleOnBlur.bind(this);
     this.handleOnKeyDown = this.handleOnKeyDown.bind(this);
+    this.handleOnKeyUp = this.handleOnKeyUp.bind(this);
     this.tearDownComponent = this.tearDownComponent.bind(this);
     this.createNewTask = this.createNewTask.bind(this);
   }
@@ -32,6 +33,7 @@ export default class NewProjectTask extends React.Component {
           placeholder="type new task, @owner, M/d"
           ref="taskInput"
           onBlur={ this.handleOnBlur }
+          onKeyUp={ this.handleOnKeyUp }
           onKeyDown={ this.handleOnKeyDown }
         />
       </div>
@@ -47,17 +49,13 @@ export default class NewProjectTask extends React.Component {
 
   handleOnKeyDown(e) {
     const { keyCode } = e;
-    const { value } = e.target;
-    console.log('[handleOnKeyDown]', keyCode, value);
 
     // escape key
     if (keyCode === 27) {
       return this.tearDownComponent();
-    } else if (keyCode === 13 && value) { // enter key
+    } else if (keyCode === 13) { // enter key
       e.preventDefault();
-      if (this.createNewTask(value)) {
-        e.target.value = '';
-      }
+      return false;
     }
   }
 
@@ -66,7 +64,6 @@ export default class NewProjectTask extends React.Component {
   }
 
   createNewTask(value = '') {
-    console.log('[createNewTask]', value);
     // this regex allows descriptions with @ and commas
     const [
       matchTerm,
@@ -87,7 +84,12 @@ export default class NewProjectTask extends React.Component {
     if (dueDate === 'tomorrow') {
       task.due_date = new Date(moment().add(1, 'day').toISOString());
     } else {
-      task.due_date = new Date(moment(dueDate, 'M/D').toISOString());
+      const momentDueDate = moment(dueDate, 'M/D');
+      if (momentDueDate.isValid()) {
+        task.due_date = new Date(momentDueDate.toISOString());
+      } else {
+        return false;
+      }
     }
 
     task.project_id = this.props.project_id;
@@ -101,4 +103,54 @@ export default class NewProjectTask extends React.Component {
 
     return taskId;
   }
+
+  handleOnKeyUp(e) {
+    const { keyCode } = e;
+    const { selectionStart, selectionEnd, value } = e.target;
+    const hasContentSelected = selectionStart !== selectionEnd;
+
+    switch (keyCode) {
+
+      // delete/backspace
+      case 8:
+      case 46:
+        break;
+
+      // enter key
+      case 13:
+        e.preventDefault();
+        // move cursor to the end if there is any selected content
+        if (hasContentSelected) {
+          e.target.value = '';
+          e.target.value = value;
+        } else if (value && this.createNewTask(value)) { // otherwise attempt to save task
+          e.target.value = '';
+        }
+        break;
+
+      // autocomplete logic
+      default:
+        const cursorAtTheEndAndContentNotSelected = !hasContentSelected && selectionStart === value.length;
+        const [
+          matchTerm,
+          matchOwner = ''
+        ] = value.match(/,\s?\@([^ ,]+)$/) || [];
+
+        // tries autocomplete only if cursor is at the end of the textarea
+        if (matchOwner && cursorAtTheEndAndContentNotSelected) {
+          const collection = require('/imports/api/project/collections/client').OwnerNames;
+          const record = collection.findOne({ name: new RegExp(`^${matchOwner}`, 'i') }, { sort: { name: 1 }});
+
+          // replace regexp match with first matching document
+          if (record) {
+            const newValue = value.replace(new RegExp(`${matchOwner}$`), record.name);
+            e.target.value = newValue;
+            e.target.selectionStart = value.length;
+            e.target.selectionEnd = newValue.length;
+          }
+        }
+        break;
+    }
+  }
+
 }
